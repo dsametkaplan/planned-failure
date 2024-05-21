@@ -35,6 +35,8 @@ This project is an application that utilizes the [Twilio API](https://www.twilio
     ACCOUNTSID=your-twilio-account-sid
     AUTH_TOKEN=your-twilio-auth-token
     PORT=5000
+    TWILIO_NUMBER=your-twilio-phone-number
+    TO_NUMBER=recipient-phone-number
     ```
 
     Note: You can obtain the `ACCOUNTSID` and `AUTH_TOKEN` values from your [Twilio console](https://www.twilio.com/console).
@@ -48,6 +50,8 @@ This project is an application that utilizes the [Twilio API](https://www.twilio
     ```
 
 2. Once the server is started, planned outages will be checked at regular intervals, and SMS notifications will be sent for the outages belonging to the specified region.
+
+    Note: The cron job for checking planned outages is scheduled to run at 1:00 AM. You can modify this schedule as needed.
 
 ## Notes
 
