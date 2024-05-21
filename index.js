@@ -7,6 +7,8 @@ require("dotenv").config();
 
 const accountSid = process.env.ACCOUNTSID;
 const authToken = process.env.AUTH_TOKEN;
+const twilioNumber = process.env.TWILIO_NUMBER;
+const toNumber = process.env.TO_NUMBER;
 const client = twilio(accountSid, authToken);
 
 const fetchData = async () => {
@@ -21,8 +23,8 @@ const fetchData = async () => {
     for (const messageText of messages1) {
       const message = await client.messages.create({
         body: messageText,
-        from: "+xxxxxxxxxx",
-        to: "+905xxxxxxxxx",
+        from: twilioNumber,
+        to: toNumber,
       });
       console.log(message);
     }
@@ -31,7 +33,7 @@ const fetchData = async () => {
   }
 };
 
-cron.schedule("* * * * *", fetchData);
+cron.schedule("0 1 * * *", fetchData);
 
 app.listen(process.env.PORT || 5000, () =>
   console.log("Server running on port" + " " + process.env.PORT || 5000)
